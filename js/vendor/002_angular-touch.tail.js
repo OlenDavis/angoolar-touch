@@ -354,8 +354,9 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     event.stopPropagation();
     event.preventDefault();
 
-    // Blur focused form elements
-    event.target && event.target.blur && event.target.blur();
+    // Removes this terrible breaking change: https://github.com/angular/angular.js/commit/0bbd20f255b2954b5c41617fe718cf6eca36a972#comments
+    // // Blur focused form elements
+    // event.target && event.target.blur && event.target.blur();
   }
 
 
