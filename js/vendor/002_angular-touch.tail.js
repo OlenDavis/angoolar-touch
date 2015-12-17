@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0
+ * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -105,7 +105,8 @@ ngTouch.factory('$swipe', [function() {
      * `$swipe` will listen for `mouse` and `touch` events.
      *
      * The four events are `start`, `move`, `end`, and `cancel`. `start`, `move`, and `end`
-     * receive as a parameter a coordinates object of the form `{ x: 150, y: 310 }`.
+     * receive as a parameter a coordinates object of the form `{ x: 150, y: 310 }` and the raw
+     * `event`. `cancel` receives the raw `event` as its single parameter.
      *
      * `start` is called on either `mousedown` or `touchstart`. After this event, `$swipe` is
      * watching for `touchmove` or `mousemove` events. These events are ignored until the total
@@ -354,9 +355,8 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     event.stopPropagation();
     event.preventDefault();
 
-    // Removes this terrible breaking change: https://github.com/angular/angular.js/commit/0bbd20f255b2954b5c41617fe718cf6eca36a972#comments
-    // // Blur focused form elements
-    // event.target && event.target.blur && event.target.blur();
+    // Blur focused form elements
+    event.target && event.target.blur && event.target.blur();
   }
 
 
